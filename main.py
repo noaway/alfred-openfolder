@@ -6,6 +6,7 @@ import os
 import re
 
 from workflow import Workflow3
+from os.path import expanduser
 
 def dir(workspace):
     for files in os.listdir(workspace):
@@ -15,24 +16,22 @@ def dir(workspace):
 
 def main(wf):
     args = wf.args
-    workspace = ""
-    query = ""
+    workspace,query = "",""
     if len(args)!=2:
         return
     for i in range(len(args)):
         if i == 0:
-            workspace = str(args[i])
+            workspace = expanduser(args[i])
         elif i == 1:
             query = str(args[i])
 
-    if len(args)>0:
-        for d in dir(workspace):
-            if d.startswith(query):
-                wf.add_item(title=d,arg=workspace+d,valid=True)
+    if workspace and workspace[-1] != '/':
+        workspace+='/'
+    for d in dir(workspace):
+        if d.startswith(query):
+            wf.add_item(title=d,arg=workspace+d,valid=True)
     wf.send_feedback()
-
 
 if __name__ == '__main__':
     wf = Workflow3()
     sys.exit(wf.run(main))
-
