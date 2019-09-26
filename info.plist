@@ -6,8 +6,34 @@
 	<string>com.alfredapp.andrew.gettingstarted.scriptfilteroutput</string>
 	<key>connections</key>
 	<dict>
+		<key>AAA46351-21D5-4DF2-85B9-233836B0541B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B8E0B96A-BFB7-44C5-9AAD-977261B7FBF0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>D2E0870A-DB2A-4D83-9977-225CA92C1389</key>
 		<array/>
+		<key>D58469E8-7895-436D-B119-2885785E76F6</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FE3A2A93-AFBA-4144-A86F-1B65263F8E48</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>EBAF4AC0-637A-4760-9F14-67FC63860CCC</key>
 		<array>
 			<dict>
@@ -23,13 +49,13 @@
 		</array>
 	</dict>
 	<key>createdby</key>
-	<string>Andrew Pepperrell</string>
+	<string>noaway</string>
 	<key>description</key>
-	<string>vscode open workspace folder</string>
+	<string>vscode and fork open workspace folder</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>vscode open workspace folder</string>
+	<string>alfred-openfolder</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -54,6 +80,8 @@
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -73,7 +101,7 @@
 				<key>runningsubtext</key>
 				<string>vscode open workspace</string>
 				<key>script</key>
-				<string>/usr/bin/python main.py "/Users/noaway/workspace-go/" "{query}"</string>
+				<string>/usr/bin/python main.py "~/workspace" "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -92,35 +120,189 @@
 			<key>uid</key>
 			<string>EBAF4AC0-637A-4760-9F14-67FC63860CCC</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>openwith</key>
+				<string>/Applications/Fork.app</string>
+				<key>sourcefile</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>FE3A2A93-AFBA-4144-A86F-1B65263F8E48</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>fk</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>fork open workspace</string>
+				<key>script</key>
+				<string>/usr/bin/python main.py "~/workspace" "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>fk</string>
+				<key>title</key>
+				<string>fork open</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>D58469E8-7895-436D-B119-2885785E76F6</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>ide</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>idea open workspace</string>
+				<key>script</key>
+				<string>/usr/bin/python main.py "~/workspace" "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>idea</string>
+				<key>title</key>
+				<string>idea open</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>AAA46351-21D5-4DF2-85B9-233836B0541B</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>openwith</key>
+				<string>/Applications/IntelliJ IDEA.app</string>
+				<key>sourcefile</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>B8E0B96A-BFB7-44C5-9AAD-977261B7FBF0</string>
+			<key>version</key>
+			<integer>3</integer>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Alfred's Script Filter object is extremely powerful, and gives you control over the results displayed in Alfred.
-
-Alfred 3 now supports JSON, which is the recommended format. XML is also supported for legacy Alfred 2 workflows, and has been updated to include the new features.
-
-A new option now exists for Script Filters, "Alfred filters results". This allows you to return a whole list of results, let Alfred do the subsequent filtering with extreme performance. When this option is selected, your script will be called once with no argument.</string>
+	<string>使用vscode打开本地工作区文件，本地需要安装vscode，默认使用~/workspace 作为搜索workspace，自定义需要手动修改</string>
 	<key>uidata</key>
 	<dict>
+		<key>AAA46351-21D5-4DF2-85B9-233836B0541B</key>
+		<dict>
+			<key>xpos</key>
+			<integer>105</integer>
+			<key>ypos</key>
+			<integer>380</integer>
+		</dict>
+		<key>B8E0B96A-BFB7-44C5-9AAD-977261B7FBF0</key>
+		<dict>
+			<key>xpos</key>
+			<integer>350</integer>
+			<key>ypos</key>
+			<integer>380</integer>
+		</dict>
 		<key>D2E0870A-DB2A-4D83-9977-225CA92C1389</key>
 		<dict>
 			<key>xpos</key>
 			<integer>350</integer>
 			<key>ypos</key>
-			<integer>110</integer>
+			<integer>100</integer>
+		</dict>
+		<key>D58469E8-7895-436D-B119-2885785E76F6</key>
+		<dict>
+			<key>xpos</key>
+			<integer>105</integer>
+			<key>ypos</key>
+			<integer>240</integer>
 		</dict>
 		<key>EBAF4AC0-637A-4760-9F14-67FC63860CCC</key>
 		<dict>
 			<key>xpos</key>
-			<integer>150</integer>
+			<integer>105</integer>
 			<key>ypos</key>
-			<integer>110</integer>
+			<integer>100</integer>
+		</dict>
+		<key>FE3A2A93-AFBA-4144-A86F-1B65263F8E48</key>
+		<dict>
+			<key>xpos</key>
+			<integer>350</integer>
+			<key>ypos</key>
+			<integer>240</integer>
 		</dict>
 	</dict>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
-	<string>1.0.0</string>
+	<string>1.0.1</string>
 	<key>webaddress</key>
-	<string>https://www.alfredapp.com</string>
+	<string>alfred.noaway.io</string>
 </dict>
 </plist>

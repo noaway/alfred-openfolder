@@ -8,6 +8,7 @@ import re
 from workflow import Workflow3
 from os.path import expanduser
 
+# 返回 workspace 目录
 def dir(workspace):
     for files in os.listdir(workspace):
         path = workspace+files
@@ -21,14 +22,18 @@ def main(wf):
         return
     for i in range(len(args)):
         if i == 0:
+            # 将 ～ 转行 Home 目录
             workspace = expanduser(args[i])
         elif i == 1:
             query = str(args[i])
-
+    
     if workspace and workspace[-1] != '/':
         workspace+='/'
+
     for d in dir(workspace):
-        if d.startswith(query):
+        # 判断 query 是否是目录名前缀
+        # 如果 query 是 / 返回全部目录
+        if d.startswith(query.strip('/')) or query == "/":
             wf.add_item(title=d,arg=workspace+d,valid=True)
     wf.send_feedback()
 
