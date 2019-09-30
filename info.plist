@@ -6,6 +6,19 @@
 	<string>com.alfredapp.andrew.gettingstarted.scriptfilteroutput</string>
 	<key>connections</key>
 	<dict>
+		<key>3AD33B8C-2190-4E18-B305-16C9A8A35420</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2972FCD8-3138-4A5A-8399-600760C0B36E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>AAA46351-21D5-4DF2-85B9-233836B0541B</key>
 		<array>
 			<dict>
@@ -61,21 +74,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>openwith</key>
-				<string>/Applications/Code.app</string>
-				<key>sourcefile</key>
-				<string>{query}</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openfile</string>
-			<key>uid</key>
-			<string>D2E0870A-DB2A-4D83-9977-225CA92C1389</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -101,7 +99,7 @@
 				<key>runningsubtext</key>
 				<string>vscode open workspace</string>
 				<key>script</key>
-				<string>/usr/bin/python main.py "~/workspace" "{query}"</string>
+				<string>/usr/bin/python search.py -workspace=~/workspace {query}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -119,6 +117,21 @@
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>EBAF4AC0-637A-4760-9F14-67FC63860CCC</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>openwith</key>
+				<string>/Applications/Code.app</string>
+				<key>sourcefile</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>D2E0870A-DB2A-4D83-9977-225CA92C1389</string>
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
@@ -165,7 +178,7 @@
 				<key>runningsubtext</key>
 				<string>fork open workspace</string>
 				<key>script</key>
-				<string>/usr/bin/python main.py "~/workspace" "{query}"</string>
+				<string>/usr/bin/python search.py -workspace=~/workspace -type=d {query}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -214,7 +227,7 @@
 				<key>runningsubtext</key>
 				<string>idea open workspace</string>
 				<key>script</key>
-				<string>/usr/bin/python main.py "~/workspace" "{query}"</string>
+				<string>/usr/bin/python search.py -workspace=~/workspace {query}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -250,11 +263,89 @@
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>openwith</key>
+				<string>/Applications/XMind ZEN.app</string>
+				<key>sourcefile</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>2972FCD8-3138-4A5A-8399-600760C0B36E</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>xmind</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>xmind open xmind dir</string>
+				<key>script</key>
+				<string>/usr/bin/python search.py -workspace=~/Documents/xmind -type=f {query}</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>xmind</string>
+				<key>title</key>
+				<string>xmind open</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>3AD33B8C-2190-4E18-B305-16C9A8A35420</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>使用vscode打开本地工作区文件，本地需要安装vscode，默认使用~/workspace 作为搜索workspace，自定义需要手动修改</string>
 	<key>uidata</key>
 	<dict>
+		<key>2972FCD8-3138-4A5A-8399-600760C0B36E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>355</integer>
+			<key>ypos</key>
+			<integer>535</integer>
+		</dict>
+		<key>3AD33B8C-2190-4E18-B305-16C9A8A35420</key>
+		<dict>
+			<key>xpos</key>
+			<integer>110</integer>
+			<key>ypos</key>
+			<integer>535</integer>
+		</dict>
 		<key>AAA46351-21D5-4DF2-85B9-233836B0541B</key>
 		<dict>
 			<key>xpos</key>
