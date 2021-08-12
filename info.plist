@@ -6,11 +6,11 @@
 	<string>com.alfredapp.andrew.gettingstarted.scriptfilteroutput</string>
 	<key>connections</key>
 	<dict>
-		<key>3AD33B8C-2190-4E18-B305-16C9A8A35420</key>
+		<key>8D2A64B9-4EA0-43FB-8193-EF4DCF6DEA48</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>2972FCD8-3138-4A5A-8399-600760C0B36E</string>
+				<string>E41DAD93-3722-491C-BA31-AFD77569ABC8</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -23,7 +23,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>B8E0B96A-BFB7-44C5-9AAD-977261B7FBF0</string>
+				<string>E41DAD93-3722-491C-BA31-AFD77569ABC8</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -32,13 +32,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>D2E0870A-DB2A-4D83-9977-225CA92C1389</key>
-		<array/>
 		<key>D58469E8-7895-436D-B119-2885785E76F6</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>FE3A2A93-AFBA-4144-A86F-1B65263F8E48</string>
+				<string>E41DAD93-3722-491C-BA31-AFD77569ABC8</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -47,11 +45,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>EBAF4AC0-637A-4760-9F14-67FC63860CCC</key>
+		<key>E41DAD93-3722-491C-BA31-AFD77569ABC8</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>D2E0870A-DB2A-4D83-9977-225CA92C1389</string>
+				<string>A81930D8-4CB0-4679-9919-628288834FC4</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -64,7 +62,7 @@
 	<key>createdby</key>
 	<string>noaway</string>
 	<key>description</key>
-	<string>vscode and fork open workspace folder</string>
+	<string>vscode, fork, idea ce open workspace folder</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -97,17 +95,17 @@
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string>vscode open workspace</string>
+				<string>vs open workspace</string>
 				<key>script</key>
-				<string>/usr/bin/python search.py -workspace=~/workspace {query}</string>
+				<string>/usr/bin/python search.py -app="Visual Studio Code" -workspace=~/workspace -type=d {query}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>vscode</string>
-				<key>title</key>
 				<string>vs</string>
+				<key>title</key>
+				<string>vs open</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -116,39 +114,45 @@
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>EBAF4AC0-637A-4760-9F14-67FC63860CCC</string>
+			<string>8D2A64B9-4EA0-43FB-8193-EF4DCF6DEA48</string>
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>openwith</key>
-				<string>/Applications/Code.app</string>
-				<key>sourcefile</key>
-				<string>{query}</string>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>set dir to "{query}"
+set app_name to (system attribute "app_name")
+
+
+if application app_name is running then
+    tell application app_name
+        open dir
+    end tell
+else
+    tell application app_name
+        activate
+        open dir
+    end tell
+end if</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.openfile</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>D2E0870A-DB2A-4D83-9977-225CA92C1389</string>
+			<string>A81930D8-4CB0-4679-9919-628288834FC4</string>
 			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>openwith</key>
-				<string>/Applications/Fork.app</string>
-				<key>sourcefile</key>
-				<string>{query}</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openfile</string>
-			<key>uid</key>
-			<string>FE3A2A93-AFBA-4144-A86F-1B65263F8E48</string>
-			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -178,7 +182,7 @@
 				<key>runningsubtext</key>
 				<string>fork open workspace</string>
 				<key>script</key>
-				<string>/usr/bin/python search.py -workspace=~/workspace -type=d {query}</string>
+				<string>/usr/bin/python search.py -app="Fork" -workspace=~/workspace -type=d {query}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -198,6 +202,14 @@
 			<string>D58469E8-7895-436D-B119-2885785E76F6</string>
 			<key>version</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>E41DAD93-3722-491C-BA31-AFD77569ABC8</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -227,7 +239,7 @@
 				<key>runningsubtext</key>
 				<string>idea open workspace</string>
 				<key>script</key>
-				<string>/usr/bin/python search.py -workspace=~/workspace {query}</string>
+				<string>/usr/bin/python search.py -app="IntelliJ IDEA CE" -workspace=~/workspace {query}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -248,151 +260,51 @@
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>openwith</key>
-				<string>/Applications/IntelliJ IDEA.app</string>
-				<key>sourcefile</key>
-				<string>{query}</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openfile</string>
-			<key>uid</key>
-			<string>B8E0B96A-BFB7-44C5-9AAD-977261B7FBF0</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>openwith</key>
-				<string>/Applications/XMind ZEN.app</string>
-				<key>sourcefile</key>
-				<string>{query}</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openfile</string>
-			<key>uid</key>
-			<string>2972FCD8-3138-4A5A-8399-600760C0B36E</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>keyword</key>
-				<string>xmind</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>xmind open xmind dir</string>
-				<key>script</key>
-				<string>/usr/bin/python search.py -workspace=~/Documents/xmind -type=f {query}</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>xmind</string>
-				<key>title</key>
-				<string>xmind open</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>3AD33B8C-2190-4E18-B305-16C9A8A35420</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
 	</array>
 	<key>readme</key>
-	<string>使用vscode打开本地工作区文件，本地需要安装vscode，默认使用~/workspace 作为搜索workspace，自定义需要手动修改</string>
+	<string>使用 vscode, idea, fork 打开本地工作区文件，本地需要安装这三款应用，默认使用 ~/workspace 作为搜索根目录，自定义需要手动修改。</string>
 	<key>uidata</key>
 	<dict>
-		<key>2972FCD8-3138-4A5A-8399-600760C0B36E</key>
+		<key>8D2A64B9-4EA0-43FB-8193-EF4DCF6DEA48</key>
 		<dict>
 			<key>xpos</key>
-			<integer>355</integer>
+			<integer>75</integer>
 			<key>ypos</key>
-			<integer>535</integer>
+			<integer>50</integer>
 		</dict>
-		<key>3AD33B8C-2190-4E18-B305-16C9A8A35420</key>
+		<key>A81930D8-4CB0-4679-9919-628288834FC4</key>
 		<dict>
 			<key>xpos</key>
-			<integer>110</integer>
+			<integer>715</integer>
 			<key>ypos</key>
-			<integer>535</integer>
+			<integer>190</integer>
 		</dict>
 		<key>AAA46351-21D5-4DF2-85B9-233836B0541B</key>
 		<dict>
 			<key>xpos</key>
-			<integer>105</integer>
+			<integer>75</integer>
 			<key>ypos</key>
-			<integer>380</integer>
-		</dict>
-		<key>B8E0B96A-BFB7-44C5-9AAD-977261B7FBF0</key>
-		<dict>
-			<key>xpos</key>
-			<integer>350</integer>
-			<key>ypos</key>
-			<integer>380</integer>
-		</dict>
-		<key>D2E0870A-DB2A-4D83-9977-225CA92C1389</key>
-		<dict>
-			<key>xpos</key>
-			<integer>350</integer>
-			<key>ypos</key>
-			<integer>100</integer>
+			<integer>330</integer>
 		</dict>
 		<key>D58469E8-7895-436D-B119-2885785E76F6</key>
 		<dict>
 			<key>xpos</key>
-			<integer>105</integer>
+			<integer>75</integer>
 			<key>ypos</key>
-			<integer>240</integer>
+			<integer>190</integer>
 		</dict>
-		<key>EBAF4AC0-637A-4760-9F14-67FC63860CCC</key>
+		<key>E41DAD93-3722-491C-BA31-AFD77569ABC8</key>
 		<dict>
 			<key>xpos</key>
-			<integer>105</integer>
+			<integer>475</integer>
 			<key>ypos</key>
-			<integer>100</integer>
-		</dict>
-		<key>FE3A2A93-AFBA-4144-A86F-1B65263F8E48</key>
-		<dict>
-			<key>xpos</key>
-			<integer>350</integer>
-			<key>ypos</key>
-			<integer>240</integer>
+			<integer>220</integer>
 		</dict>
 	</dict>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.0.1</string>
+	<string>1.0.3</string>
 	<key>webaddress</key>
 	<string>alfred.noaway.io</string>
 </dict>
