@@ -19,6 +19,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>3BA247E6-274E-475A-A28A-0D92A5D7E92D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5DC77CE8-368E-453A-AA3E-76C0DA97B30E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>8D2A64B9-4EA0-43FB-8193-EF4DCF6DEA48</key>
 		<array>
 			<dict>
@@ -37,6 +50,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>1085A56D-579C-4BA7-90FA-A01E27B6D601</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A81930D8-4CB0-4679-9919-628288834FC4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3BA247E6-274E-475A-A28A-0D92A5D7E92D</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -201,7 +227,9 @@ else
         activate
         open dir
     end tell
-end if</string>
+end if
+
+return dir</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -219,8 +247,32 @@ end if</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>/usr/bin/python index.py update_priority {query}</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>5DC77CE8-368E-453A-AA3E-76C0DA97B30E</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argument</key>
 				<string>/-------- openfolder ---------\
+open folder
 query="{query}"
 variables=
 {allvars}
@@ -234,6 +286,28 @@ variables=
 			<string>alfred.workflow.utility.debug</string>
 			<key>uid</key>
 			<string>1085A56D-579C-4BA7-90FA-A01E27B6D601</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>/-------- openfolder ---------\
+update_priority: 
+query="{query}"
+variables=
+{allvars}
+\-------- openfolder ---------/</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>3BA247E6-274E-475A-A28A-0D92A5D7E92D</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -344,9 +418,23 @@ variables=
 		<key>1085A56D-579C-4BA7-90FA-A01E27B6D601</key>
 		<dict>
 			<key>xpos</key>
-			<integer>355</integer>
+			<integer>295</integer>
 			<key>ypos</key>
 			<integer>245</integer>
+		</dict>
+		<key>3BA247E6-274E-475A-A28A-0D92A5D7E92D</key>
+		<dict>
+			<key>xpos</key>
+			<integer>600</integer>
+			<key>ypos</key>
+			<integer>245</integer>
+		</dict>
+		<key>5DC77CE8-368E-453A-AA3E-76C0DA97B30E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>710</integer>
+			<key>ypos</key>
+			<integer>215</integer>
 		</dict>
 		<key>8D2A64B9-4EA0-43FB-8193-EF4DCF6DEA48</key>
 		<dict>
@@ -365,7 +453,7 @@ variables=
 		<key>A81930D8-4CB0-4679-9919-628288834FC4</key>
 		<dict>
 			<key>xpos</key>
-			<integer>515</integer>
+			<integer>410</integer>
 			<key>ypos</key>
 			<integer>215</integer>
 		</dict>
@@ -392,7 +480,7 @@ variables=
 		<string>~</string>
 	</dict>
 	<key>version</key>
-	<string>1.1.1</string>
+	<string>1.1.2</string>
 	<key>webaddress</key>
 	<string>alfred.noaway.io</string>
 </dict>

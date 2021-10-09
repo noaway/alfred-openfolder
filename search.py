@@ -15,11 +15,11 @@ def search(wf, query):
     with Db() as (_, cursor):
         try:
             cursor.execute(
-                "select * from dirs where dir like ? order by length(root) limit 30", ("%{}%".format(query),))
+                "select * from dirs where dir like ? order by priority desc, length(root) limit 30", ("%{}%".format(query),))
         except sqlite3.OperationalError as e:
             print(e)
 
-        for root, dir in cursor.fetchall():
+        for root, dir, _ in cursor.fetchall():
             if not os.path.exists("{}/{}".format(root, dir)):
                 cursor.execute(
                     "delete from dirs where root = ? and dir = ?", (root, dir,))
@@ -37,7 +37,7 @@ def main(wf):
     args = parser.parse_args()
 
     run_in_background(
-        "update_index", ["/usr/bin/python", wf.workflowfile("update_index.py")])
+        "update_index", ["/usr/bin/python", wf.workflowfile("index.py"), "create_index"])
     wf.setvar(name="app_name", value=args.app)
     search(wf, args.query.strip('/'))
 

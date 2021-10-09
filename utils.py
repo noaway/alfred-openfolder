@@ -13,7 +13,13 @@ class Db:
     def __enter__(self):
         self.conn = sqlite3.connect(self.openfolder + "/index.db")
         self.conn.text_factory = str
-        return self.conn, self.conn.cursor()
+        self.cursor = self.conn.cursor()
+
+        self.cursor.execute(
+            "create table if not exists dirs (root text not null, dir text not null, priority integer not null, unique(root, dir))")
+        self.conn.commit()
+
+        return self.conn, self.cursor
 
     def __exit__(self, type, value, traceback):
         self.conn.commit()
