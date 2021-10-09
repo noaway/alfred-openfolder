@@ -2,29 +2,31 @@
 # encoding: utf-8
 
 import os
-import re
 import sys
+import sqlite3
 import argparse
 
+from utils import Db
 from workflow import Workflow3
-from os.path import expanduser
+from workflow.background import run_in_background
 
 
-def dirs(workspace, type):
-    # 返回 workspace 目录
-    for files in os.listdir(workspace):
-        path = workspace + files
-        if type == "d" and os.path.isdir(path):
-            yield files
-        elif type == "f" and os.path.isfile(path):
-            yield files
-        elif not type or type == "":
-            yield files
+def search(wf, query):
+    with Db() as (_, cursor):
+        try:
+            cursor.execute(
+                "select * from dirs where dir like ? order by length(root) limit 30", ("%{}%".format(query),))
+        except sqlite3.OperationalError as e:
+            print(e)
 
-
-def add_error_item(wf, title):
-    wf.add_item(title=title, valid=True)
-    wf.send_feedback()
+        for root, dir in cursor.fetchall():
+            if not os.path.exists("{}/{}".format(root, dir)):
+                cursor.execute(
+                    "delete from dirs where root = ? and dir = ?", (root, dir,))
+                continue
+            ap = "{}/{}".format(root, dir)
+            wf.add_item(title=dir, arg=ap, subtitle=ap, valid=True)
+        wf.send_feedback()
 
 
 def main(wf):
@@ -32,39 +34,12 @@ def main(wf):
     parser.add_argument("query", metavar="query", type=str, help="查找的文件名。")
     parser.add_argument("-app", metavar="app", type=str,
                         help="用于打开文件的 app 名字。")
-    parser.add_argument("-type", dest="type",
-                        help="搜索类型，如果是文件参数为f 如果搜索目录参数是 d。")
     args = parser.parse_args()
 
+    run_in_background(
+        "update_index", ["/usr/bin/python", wf.workflowfile("update_index.py")])
     wf.setvar(name="app_name", value=args.app)
-
-    wp_path = os.getenv("workspaces")
-    if not wp_path:
-        add_error_item(wf, "缺少 workspaces 环境变量。")
-        return
-
-    workspaces = [p if p[-1] == "/" else p + "/" for p in (expanduser(p)
-                  for p in wp_path.split(":")) if os.path.exists(p)]
-
-    if len(workspaces) == 0:
-        add_error_item(wf, "workspaces 路径不合法。")
-        return
-
-    has_item = False
-    query = args.query.strip('/')
-
-    for workspace in workspaces:
-        for dir in dirs(workspace, args.type):
-            # 如果 query 是 / 返回全部目录
-            if re.search(query, dir) is not None:
-                if not has_item:
-                    has_item = True
-                ap = workspace + dir
-                wf.add_item(title=dir, arg=ap, subtitle=ap, valid=True)
-
-    if not has_item:
-        wf.add_item(title="未找到目录" + query, valid=True)
-    wf.send_feedback()
+    search(wf, args.query.strip('/'))
 
 
 if __name__ == '__main__':

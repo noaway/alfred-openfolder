@@ -110,7 +110,7 @@
 				<key>runningsubtext</key>
 				<string>vs open workspace</string>
 				<key>script</key>
-				<string>/usr/bin/python search.py -app="Visual Studio Code" -type=d {query}</string>
+				<string>/usr/bin/python search.py -app="Visual Studio Code" {query}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -159,7 +159,7 @@
 				<key>runningsubtext</key>
 				<string>fork open workspace</string>
 				<key>script</key>
-				<string>/usr/bin/python search.py -app="Fork" -type=d {query}</string>
+				<string>/usr/bin/python search.py -app="Fork" {query}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -265,7 +265,7 @@ variables=
 				<key>runningsubtext</key>
 				<string>idea open workspace</string>
 				<key>script</key>
-				<string>/usr/bin/python search.py -app="IntelliJ IDEA CE" -type=d {query}</string>
+				<string>/usr/bin/python search.py -app="IntelliJ IDEA CE" {query}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -314,7 +314,7 @@ variables=
 				<key>runningsubtext</key>
 				<string>iTerm open workspace</string>
 				<key>script</key>
-				<string>/usr/bin/python search.py -app="iTerm" -type=d {query}</string>
+				<string>/usr/bin/python search.py -app="iTerm" {query}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -386,11 +386,13 @@ variables=
 	</dict>
 	<key>variables</key>
 	<dict>
+		<key>openfolder</key>
+		<string>~/.alfred-openfolder</string>
 		<key>workspaces</key>
-		<string>~:~/workspace:~/Desktop:~/Downloads:~/Documents</string>
+		<string>~</string>
 	</dict>
 	<key>version</key>
-	<string>1.1.0</string>
+	<string>1.1.1</string>
 	<key>webaddress</key>
 	<string>alfred.noaway.io</string>
 </dict>
