@@ -8,7 +8,10 @@ with Db() as (conn, cursor):
         "create table if not exists dirs (root text not null, dir text not null, unique(root, dir))")
     conn.commit()
 
-    for workspace in (expanduser(p) for p in os.getenv("workspaces").split(":")):
+    for workspace in (expanduser(p) for p in os.getenv("workspaces", "~").split(":")):
+        if not os.path.exists(workspace):
+            continue
+
         for root, dirs, files in os.walk(workspace, topdown=True):
             if not root or not dirs:
                 continue
